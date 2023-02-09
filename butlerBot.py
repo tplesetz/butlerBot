@@ -20,5 +20,5 @@ async def on_message(message):
             await msg.delete()
 
 if __name__ == '__main__':
-    os.environ['token'] = 'MTA3MzAxMDQ2MTAwOTc5MzA3Ng.G7HMmz.rFGULLB6D-zYW_pXQlVt6ZosCaLXwX8pyfGcW8'
+    os.environ['token'] = '<your token here>'
     client.run(os.environ['token'])
