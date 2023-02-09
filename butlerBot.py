@@ -1,12 +1,15 @@
 import discord
 import os
+from discord import app_commands
 
 # This is the default intent set, but you can change it to whatever you want.
-intents = discord.Intents.default()
-intents.message_content = True
-
-# This is the default activity, but you can change it to whatever you want.
-client = discord.Client(intents=intents)
+class aclient(discord.Client):
+    def __init__(self) -> None:
+        intents = discord.Intents.default()
+        intents.message_content = True
+        super().__init__(intents=intents)
+        self.tree = app_commands.CommandTree(self)
+        self.activity = discord.Activity(type=discord.ActivityType.watching, name="/clean")
 
 # Function to delete a specified number of messages from a channel
 async def delete_messages(channel, num_messages):
@@ -15,22 +18,21 @@ async def delete_messages(channel, num_messages):
         messages.append(message)
     await channel.delete_messages(messages)
 
-# This is the default status, but you can change it to whatever you want.
+
+client = aclient()
+
 @client.event
 async def on_ready():
-    print(f'Logged in as {client.user}')
+    await client.tree.sync()
 
-# Event that triggers when the bot receives a message
-@client.event
-async def on_message(message):
-    # Check if the message starts with the prefix "!delete"
-    if message.content.startswith("!clean"):
-        # Extract the number of messages to delete
-        num_messages = int(message.content.split(" ")[1]) + 1
-        # Delete the specified number of messages from the channel
-        await delete_messages(message.channel, num_messages)
+@client.tree.command(name="clean", description="Sweep up the mess in this channel.")
+
+async def clean(interaction: discord.Interaction, *, amount: int):
+    await interaction.response.send_message("Cleaning up your filth...", ephemeral=True, delete_after=3)
+    await delete_messages(interaction.channel, amount)
+    await interaction.channel.send("Done cleaning up!", delete_after=3)
 
 # This is the default token, but you can change it to whatever you want.
 if __name__ == '__main__':
-    os.environ['token'] = '<your token here>'
+    os.environ['token'] = 'MTA3MzAxMDQ2MTAwOTc5MzA3Ng.GIBkGr.buyoAENAVQv7B2GWuGi3JETYPXz5eIwPvWKNlA'
     client.run(os.environ['token'])
