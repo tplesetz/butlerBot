@@ -24,7 +24,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     # Check if the message starts with the prefix "!delete"
-    if message.content.startswith("!delete"):
+    if message.content.startswith("!clean"):
         # Extract the number of messages to delete
         num_messages = int(message.content.split(" ")[1])
         # Delete the specified number of messages from the channel
