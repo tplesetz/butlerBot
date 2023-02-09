@@ -34,5 +34,5 @@ async def clean(interaction: discord.Interaction, *, amount: int):
 
 # This is the default token, but you can change it to whatever you want.
 if __name__ == '__main__':
-    os.environ['token'] = 'MTA3MzAxMDQ2MTAwOTc5MzA3Ng.GIBkGr.buyoAENAVQv7B2GWuGi3JETYPXz5eIwPvWKNlA'
+    os.environ['token'] = '<your token here>'
     client.run(os.environ['token'])
