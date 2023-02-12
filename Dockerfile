@@ -8,6 +8,6 @@ RUN apk add --no-cache --virtual .build-deps build-base && \
     pip install -r requirements.txt && \
     apk del .build-deps
 
-COPY butlerBot.py .
+COPY butlerbot.py .
 
-CMD ["python", "butlerBot.py"]
+CMD ["python", "butlerbot.py"]
