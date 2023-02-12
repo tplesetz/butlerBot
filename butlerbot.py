@@ -1,6 +1,7 @@
 import discord
-import os
+from dotenv import load_dotenv
 from discord import app_commands
+import os
 
 # This is the default intent set, but you can change it to whatever you want.
 class aclient(discord.Client):
@@ -34,8 +35,7 @@ async def clean(interaction: discord.Interaction, *, amount: int):
 
 # This is the default token, but you can change it to whatever you want.
 if __name__ == '__main__':
-    
-    #openAI_key = os.getenv("OPENAI_KEY")
-
-    os.environ['token'] = os.getenv("DISCORD_BOT_TOKEN")
-    client.run(os.environ['token'])
+    load_dotenv()
+    discord_token = os.getenv("DISCORD_BOT_TOKEN")
+    #print(os.getenv("DISCORD_BOT_TOKEN"))
+    client.run(discord_token)
