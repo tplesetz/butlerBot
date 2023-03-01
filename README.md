@@ -3,19 +3,6 @@ You'll need a Discord bot to get started. Here is a reference for how to set one
 
 https://discord.com/developers/docs/getting-started
 
-## pull
-```docker
-# pull image from dockerhub
-docker pull tylerplesetz/butlerbot:latest
-```
-
-## build
-```docker
-# build image
-sudo docker build -t butlerbot .
-```
-
-
 ## run
 ```docker
 # create container and run
