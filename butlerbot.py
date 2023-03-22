@@ -31,7 +31,6 @@ async def on_ready():
 async def clean(interaction: discord.Interaction, *, amount: int):
     await interaction.response.send_message("Cleaning up your filth...", ephemeral=True, delete_after=3)
     await delete_messages(interaction.channel, amount)
-    await interaction.channel.send("Done cleaning up!", delete_after=3)
 
 # This is the default token, but you can change it to whatever you want.
 if __name__ == '__main__':
