@@ -26,7 +26,7 @@ client = aclient()
 async def on_ready():
     await client.tree.sync()
 
-@client.tree.command(name="clean", description="Sweep up the mess in this channel.")
+@client.tree.command(name="clean", description="Let me sweep up after you messy humans.")
 
 async def clean(interaction: discord.Interaction, *, amount: int):
     await interaction.response.send_message("Cleaning up your filth...", ephemeral=True, delete_after=3)
